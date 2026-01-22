@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>IMU Smart Bot</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.10.1/core.js"></script>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        #chat-window { width: 400px; height: 450px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px 15px; border-radius: 15px; font-size: 14px; max-width: 80%; }
+        .bot { background: #007bff; color: white; align-self: flex-start; }
+        .user { background: #e2e2e2; color: #333; align-self: flex-end; }
+        .input-area { margin-top: 15px; display: flex; gap: 10px; width: 400px; }
+        input { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ccc; outline: none; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2 style="color: #007bff;">🤖 IMU Smart Bot</h2>
+    <div id="chat-window">
+        <div class="msg bot">Halo Silakan ketik pertanyaanmu tentang Sekolah IMU di sini.</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="user-input" placeholder="Tanya sesuatu...">
+        <button id="send-btn" py-click="process_chat">Kirim</button>
+    </div>
+
+    <script type="py">
+        from pyscript import display, document
+
+        # Data Jawaban
+brain = {
+            # Informasi Utama
+            "daftar": "Pendaftaran! Silakan hubungi admin atau datang ke sekolah. 📝",
+            "biaya": "Informasi biaya tanya ke admin pencet logo wa di samping kiri 💰",
+            "lokasi": "Sekolah kami berada di lingkungan yang asri dan nyaman. 🏫",
+            "halo": "Halo juga Alka Sultan! Ada yang bisa dibantu? ✨",
+            
+            # Fasilitas & Program
+            "fasilitas": "Kami punya lapangan, masjid dan area bermain. 🏗️",
+            "beasiswa": "kami Ada beasiswa untuk anak yatim full uang masuk dan uang sekolah🎓",
+            "guru": "Guru-guru di IMU sangat asik dan ahli di bidang masing masing. 👨‍🏫",
+            "jam": "Sekolah dimulai jam 06.30 sampai jam 15.30 sore. 🕒",
+            
+            # Ekstrakurikuler & Kegiatan
+            "ekskul": "Banyak pilihan! Ada futsal, memanah, dan pramuka",
+            "makan": "Kantin kita menyediakan makanan sehat dan bergizi setiap hari. 🍱",
+            "seragam": "Seragam IMU desainnya keren dan nyaman dipakai beraktivitas. 👕",
+            "libur": "Kalender libur mengikuti jadwal dinas pendidikan kok. 🏖️",
+            
+            # Lain-lain & Karakter
+            "karakter": "Selain itu, IMU sangat fokus pada akhlak dan adab siswa. 🌟",
+            "tahfidz": "Program Tahfidz Quran membantu siswa menghafal Al-Quran dengan mudah. 📖",
+            "lomba": "Siswa IMU sering ikut lomba pildacil dan  tingkat nasional! 🏆",
+            "kerjasama": "IMU bekerjasama dengan banyak perusahaan IT ternama. 🤝",
+            "sejarah": "Sekolah IMU didirikan untuk mencetak pemimpin masa depan. 📜",
+            "terima kasih": "Sama-sama! Senang bisa membantu Alka hari ini. 😊"
+        }
+
+        def process_chat(event):
+            # Ambil input
+            input_el = document.querySelector("#user-input")
+            user_text = input_el.value.strip().lower()
+            
+            if not user_text:
+                return
+
+            # Tampilkan pesan user
+            add_message(input_el.value, "user")
+            
+            # Cari jawaban
+            reply = "maaf saya tidak mengerti, silahkan langsung tanya ke admin"
+            for key in brain:
+                if key in user_text:
+                    reply = brain[key]
+                    break
+            
+            # Tampilkan pesan bot
+            add_message(reply, "bot")
+            
+            # Reset input
+            input_el.value = ""
+
+        def add_message(text, sender):
+            win = document.querySelector("#chat-window")
+            new_msg = document.createElement("div")
+            new_msg.className = f"msg {sender}"
+            new_msg.innerText = text
+            win.appendChild(new_msg)
+            # Auto scroll ke bawah
+            win.scrollTop = win.scrollHeight
+    </script>
+
+</body>
+</html> 

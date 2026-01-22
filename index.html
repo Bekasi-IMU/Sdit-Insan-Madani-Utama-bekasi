@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SDIT Insan Madani Utama - Sekolah Islam Terpadu Berkualitas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary: #1a5f7a;
+            --secondary: #57cc99;
+            --accent: #ffd32d;
+            --dark: #0a3d62;
+            --light: #f8f9fa;
+            --text: #333333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 15px auto 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-accent:hover {
+            background: transparent;
+            color: var(--dark);
+        }
+        /* ===== NAVBAR ===== */
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+        
+        .logo-text p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            margin-right: 10px;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+            background: var(--accent);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+            background: var(--accent);
+        }
+        /* ===== FULLSCREEN MENU ===== */
+        
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 95, 122, 0.98);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-menu:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .menu-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin-bottom: 40px;
+            object-fit: cover;
+        }
+        
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .menu-items>a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            width: 100%;
+            text-align: center;
+            border-radius: 10px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-items>a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .menu-items>a:hover:before {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            opacity: 1;
+        }
+        
+        .submenu {
+            width: 80%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .submenu.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .submenu a {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: var(--transition);
+            margin-bottom: 8px;
+        }
+        
+        .submenu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--accent);
+            padding-left: 25px;
+        }
+        /* ===== HERO SLIDER ===== */
+        
+        .hero-slider {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            margin-top: 90px;
+            overflow: hidden;
+            border-bottom: 5px solid var(--accent);
+        }
+        
+        .slides {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.8s ease;
+        }
+        
+        .slide {
+            width: 20%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .slide-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.8s ease;
+        }
+        
+        .slide-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideUp 1s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .slider-nav button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slider-nav button.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+        
+        .slider-arrows button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slider-arrows button:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        /* ===== ANNOUNCEMENT BAR ===== */
+        
+        .announcement-bar {
+            background: var(--primary);
+            color: white;
+            padding: 12px 0;
+            overflow: hidden;
+        }
+        
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            animation: marquee 30s linear infinite;
+        }
+        
+        .announcement-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .announcement-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        /* ===== LEADERSHIP SECTION ===== */
+        
+        .leadership {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .leadership-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .leader-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 320px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .leader-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .leader-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--secondary);
+        }
+        
+        .leader-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .leader-card:hover .leader-photo img {
+            transform: scale(1.1);
+        }
+        
+        .leader-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .leader-card .position {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            background: rgba(87, 204, 153, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .leader-card .click-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        /* ===== FEATURES SECTION ===== */
+        
+        .features {
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: rotateY(180deg) scale(1.1);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        /* ===== ABOUT SECTION ===== */
+        
+        .about {
+            background: linear-gradient(135deg, var(--light) 0%, #e3f2fd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%231a5f7a" fill-opacity="0.05" d="M100,0 C155.228,0 200,44.772 200,100 C200,155.228 155.228,200 100,200 C44.772,200 0,155.228 0,100 C0,44.772 44.772,0 100,0 Z"/></svg>');
+            background-size: contain;
+            z-index: 0;
+        }
+        
+        .about-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-content h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .about-content h4 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .about-content p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        /* ===== FOOTER ===== */
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .quick-links ul {
+            list-style: none;
+        }
+        
+        .quick-links li {
+            margin-bottom: 12px;
+        }
+        
+        .quick-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quick-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .quick-links a:before {
+            content: '→';
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .quick-links a:hover:before {
+            opacity: 1;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        /* ===== MODAL ===== */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            animation: modalSlideIn 0.4s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            color: #777;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+            background: rgba(0, 0, 0, 0.05);
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .modal-header h2 {
+            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-header .position {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 500;
+            background: rgba(87, 204, 153, 0.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .modal-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+        
+        @media (max-width: 992px) {
+            .hero-slider {
+                height: 70vh;
+                min-height: 500px;
+            }
+            .slide-content h1 {
+                font-size: 2.8rem;
+            }
+            .slide-content p {
+                font-size: 1.1rem;
+            }
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 60vh;
+                min-height: 400px;
+                margin-top: 70px;
+            }
+            .slide-content h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+            .slide-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .leader-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .menu-items>a {
+                font-size: 1.5rem;
+                padding: 12px 20px;
+            }
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-slider {
+                height: 50vh;
+                min-height: 300px;
+            }
+            .slide-content h1 {
+                font-size: 1.8rem;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            .logo-text p {
+                font-size: 0.75rem;
+            }
+            .social-icons a {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            .feature-card {
+                padding: 30px 20px;
+            }
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            .about-content h2 {
+                font-size: 2rem;
+            }
+            .about-content h4 {
+                font-size: 1.2rem;
+            }
+        }
+        /* ===== SCROLLBAR ===== */
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: var(--dark);
+        }
+        /* ===== UTILITY CLASSES ===== */
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+        
+        .mb-40 {
+            margin-bottom: 40px;
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            /* Jarak dari bawah */
+            right: 20px;
+            /* Jarak dari kanan */
+            z-index: 9999;
+            /* Agar selalu berada di atas elemen lain */
+        }
+        
+        .chatbot-button {
+            display: flex;
+            align-items: center;
+            background-color: #ff0000ff;
+            /* Warna khas WhatsApp */
+            color: white;
+            text-decoration: none;
+            padding: 29px 24px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .chatbot-button img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 20px;
+            padding: 2px;
+        }
+        
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            /* Efek membesar saat kursor di atasnya */
+            background-color: #ff4343ff;
+        }
+        /* Responsif untuk HP: Hilangkan tulisan, sisakan ikon saja agar tidak sempit */
+        
+        @media (max-width: 600px) {
+            .chatbot-button span {
+                display: none;
+            }
+            .chatbot-button {
+                padding: 12px;
+            }
+            .chatbot-button img {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+b
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="SDIT Insan Madani Utama">
+                <div class="logo-text">
+                    <h1>SDIT IMU</h1>
+                    <p>Insan Madani Utama</p>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="social-icons">
+                    <a href="https://youtube.com/@sditinsanmadaniutama214" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@sitisugiartispdi" target="_blank" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/sditinsanmadaniutama" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/6285776987909" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fullscreen Menu -->
+    <div class="fullscreen-menu" id="fullscreenMenu">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <img src="logo.png" alt="Logo" class="menu-logo">
+
+        <div class="menu-items">
+            <a href="#home" class="menu-link">Beranda</a>
+            <a href="#" class="menu-link" onclick="toggleSubmenu('profil')">Profil Sekolah</a>
+            <div class="submenu" id="profilSubmenu">
+                <a href="#"><i class="fas fa-bullseye"></i> Visi & Misi</a>
+                <a href="#"><i class="fas fa-history"></i> Sejarah</a>
+                <a href="#"><i class="fas fa-handshake"></i> Sambutan Kepala Sekolah</a>
+            </div>
+
+            <a href="#" class="menu-link" onclick="toggleSubmenu('akademik')">Akademik</a>
+            <div class="submenu" id="akademikSubmenu">
+                <a href="#"><i class="fas fa-book"></i> Kurikulum</a>
+                <a href="#"><i class="fas fa-star"></i> Program Keunggulan</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Jadwal Pembelajaran</a>
+            </div>
+
+            <a href="#" class="menu-link" onclick="toggleSubmenu('fasilitas')">Fasilitas</a>
+            <div class="submenu" id="fasilitasSubmenu">
+                <a href="#"><i class="fas fa-school"></i> Ruang Kelas</a>
+                <a href="#"><i class="fas fa-mosque"></i> Masjid</a>
+                <a href="#"><i class="fas fa-futbol"></i> Lapangan Olahraga</a>
+                <a href="#"><i class="fas fa-utensils"></i> Kantin Sehat</a>
+            </div>
+
+            <a href="#" class="menu-link" onclick="toggleSubmenu('ppdb')">PPDB</a>
+            <div class="submenu" id="ppdbSubmenu">
+                <a href="#"><i class=" fas fa-road"></i> Alur Pendaftaran</a>
+                <a href="#"><i class="fas fa-money-bill-wave"></i> Biaya Pendidikan</a>
+                <a href="#"><i class="fas fa-edit"></i> Formulir Pendaftaran</a>
+                <a href="#" class="btn btn-accent"><i class="fas fa-user-plus"></i> Daftar Sekarang</a>
+            </div>
+        </div>
+    </div>
+    <div class="chatbot-container">
+        <a href="now.html" target="_blank" class="chatbot-button">
+            <h2>🤖</h2>
+            <h2>Tanya Kami</h1>
+        </a>
+    </div>
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+        <div class="slides" id="slides">
+            <div class="slide">
+                <img src="foto1.jpeg" alt="Siswa SDIT Insan Madani Utama">
+                <div class="slide-content">
+                    <h1>SDIT Insan Madani Utama</h1>
+                    <p>Mencetak Generasi Qur'ani, Berakhlak Mulia, dan Berprestasi</p>
+                    <a href="#" class="btn btn-accent">Info Pendaftaran</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="foto2.jpeg" alt="Kegiatan Belajar">
+                <div class="slide-content">
+                    <h1>Pendidikan Berkualitas</h1>
+                    <p>Integrasi kurikulum nasional dan nilai-nilai Islami</p>
+                    <a href="#" class="btn btn-accent">Lihat Program</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="foto3.jpeg" alt="Fasilitas Sekolah">
+                <div class="slide-content">
+                    <h1>Fasilitas Lengkap</h1>
+                    <p>Lingkungan belajar yang nyaman dan mendukung</p>
+                    <a href="#" class="btn btn-accent">Lihat Fasilitas</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="foto4.jpeg" alt="Kegiatan Ekstrakurikuler">
+                <div class="slide-content">
+                    <h1>Pengembangan Karakter</h1>
+                    <p>Membentuk pribadi berakhlak mulia dan mandiri</p>
+                    <a href="#" class="btn btn-accent">Lihat Kegiatan</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="pramuka.png" alt="Kegiatan Pramuka">
+                <div class="slide-content">
+                    <h1>Ekstrakurikuler Beragam</h1>
+                    <p>Mengembangkan bakat dan minat siswa secara optimal</p>
+                    <a href="#" class="btn btn-accent">Lihat Ekstrakurikuler</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="slider-arrows">
+            <button id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <div class="slider-nav" id="sliderNav">
+            <!-- Generated by JS -->
+        </div>
+    </section>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <div class="announcement-icon">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+            <div class="announcement-text">
+                🎉 PPDB TAHUN AJARAN 2026/2027 TELAH DIBUKA! Segera daftarkan putra-putri Anda. Kuota terbatas!
+            </div>
+            <div class="announcement-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="announcement-text">
+                📞 Hubungi: (021) 8896 7610 | WA: 0857-7698-7909
+            </div>
+        </div>
+    </div>
+
+    <!-- Leadership Section -->
+    <section class="leadership" id="leadership">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pimpinan Sekolah</h2>
+                <p>Dibimbing oleh tenaga pendidik yang profesional dan berkompeten</p>
+            </div>
+
+            <div class="leadership-cards">
+                <div class="leader-card" onclick="openModal('ketua')">
+                    <div class="leader-photo">
+                        <img src="abi.png" alt="Ketua Yayasan">
+                    </div>
+                    <h3>Dr. H. Agung Supriyanto, S.P., M.M.</h3>
+                    <div class="position">KETUA YAYASAN</div>
+                    <p class="click-info">
+                        <i class="fas fa-info-circle"></i> Klik untuk informasi lengkap
+                    </p>
+                </div>
+
+                <div class="leader-card" onclick="openModal('kepsek')">
+                    <div class="leader-photo">
+                        <img src="umi.png" alt="Kepala Sekolah">
+                    </div>
+                    <h3>Hj. Siti Sugiarti, M.Pd.</h3>
+                    <div class="position">KEPALA SEKOLAH</div>
+                    <p class="click-info">
+                        <i class="fas fa-info-circle"></i> Klik untuk informasi lengkap
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Unggulan</h2>
+                <p>Keunggulan yang membedakan SDIT Insan Madani Utama</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-quran"></i>
+                    </div>
+                    <h3>Tahfidz Al-Qur'an</h3>
+                    <p>Program unggulan menghafal Al-Qur'an dengan metode yang menyenangkan. Target hafalan 1-3 juz selama masa belajar.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Pembentukan Karakter</h3>
+                    <p>Pembiasaan akhlak mulia sehari-hari melalui program karakter terstruktur dan keteladanan guru.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Teknologi Pendidikan</h3>
+                    <p>Integrasi teknologi dalam pembelajaran untuk menyiapkan siswa menghadapi era digital dengan tetap berlandaskan nilai Islami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>SDIT Insan Madani Utama</h2>
+                <h4>Membangun sistem pendidikan masa depan dengan pondasi agama yang kuat</h4>
+
+                <p>Sebagai sekolah Islam terpadu yang berkomitmen memberikan pendidikan terbaik, kami mengintegrasikan kurikulum nasional dengan nilai-nilai Islam untuk membentuk generasi yang cerdas, berakhlak mulia, dan siap menghadapi tantangan zaman.</p>
+
+                <p>Dengan fasilitas lengkap, guru berkualitas, dan lingkungan belajar yang kondusif, kami siap membimbing putra-putri Anda menjadi insan madani yang bermanfaat bagi umat dan bangsa.</p>
+
+                <a href="#" class="btn">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Alamat</strong>
+                                <p>Jl. Kenangan 3 No. 165<br>Bekasi Barat, Jawa Barat</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Telepon</strong>
+                                <p>(021) 8896 7610</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>info@sditimu.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Jam Operasional</strong>
+                                <p>Senin - Jumat: 07.00 - 16.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Navigasi Cepat</h3>
+                    <div class="quick-links">
+                        <ul>
+                            <li><a href="#home">Beranda</a></li>
+                            <li><a href="#leadership">Pimpinan Sekolah</a></li>
+                            <li><a href="#features">Program Unggulan</a></li>
+                            <li><a href="#" onclick="toggleMenu()">Profil Sekolah</a></li>
+                            <li><a href="#" onclick="toggleMenu()">PPDB Online</a></li>
+                            <li><a href="#" onclick="showContactModal()">Hubungi Kami</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <p>Dapatkan informasi terbaru tentang kegiatan sekolah melalui media sosial kami.</p>
+                    <div class="footer-social">
+                        <a href="https://youtube.com/@sditinsanmadaniutama214" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@sitisugiartispdi" target="_blank" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sditinsanmadaniutama" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/6285776987909" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 SDIT Insan Madani Utama. Semua hak dilindungi.</p>
+                <p class="mt-20">Website oleh Alka Sultan | SDIT Insan Madani Utama</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Leader Details -->
+    <div class="modal" id="leaderModal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal()">&times;</div>
+            <div class="modal-header" id="modalHeader">
+                <!-- Content will be inserted by JavaScript -->
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Contact -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeContactModal()">&times;</div>
+            <div class="modal-header">
+                <h2>Hubungi Kami</h2>
+                <div class="position">Informasi Kontak</div>
+            </div>
+            <div class="modal-body">
+                <p>Untuk informasi lebih lanjut tentang SDIT Insan Madani Utama, silakan hubungi kami melalui:</p>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">Kontak Penting</h3>
+                    <p><strong>Telepon:</strong> (021) 8896 7610</p>
+                    <p><strong>WhatsApp:</strong> 0857-7698-7909</p>
+                    <p><strong>Email:</strong> info@sditimu.com</p>
+                    <p><strong>Alamat:</strong> Jl. Kenangan 3 No. 165, Bekasi Barat</p>
+                </div>
+
+                <p>Kami siap melayani pertanyaan Anda mengenai:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Pendaftaran siswa baru</li>
+                    <li>Informasi biaya pendidikan</li>
+                    <li>Program dan kurikulum sekolah</li>
+                    <li>Kunjungan sekolah</li>
+                </ul>
+
+                <p style="text-align: center; margin-top: 30px;">
+                    <a href="https://wa.me/6285776987909" class="btn btn-accent" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== SLIDER FUNCTIONS =====
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function initSlider() {
+            // Create navigation dots
+            const sliderNav = document.getElementById('sliderNav');
+            sliderNav.innerHTML = '';
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.onclick = () => goToSlide(i);
+                sliderNav.appendChild(dot);
+            }
+
+            updateNavigation();
+            startAutoSlide();
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            const slidesContainer = document.getElementById('slides');
+            slidesContainer.style.transform = `translateX(-${currentSlide * 20}%)`;
+            updateNavigation();
+            resetAutoSlide();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        function updateNavigation() {
+            const dots = document.querySelectorAll('#sliderNav button');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        // ===== MENU FUNCTIONS =====
+        function toggleMenu() {
+            const menu = document.getElementById('fullscreenMenu');
+            const toggle = document.getElementById('menuToggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function toggleSubmenu(submenuId) {
+            event.preventDefault();
+            const submenu = document.getElementById(submenuId + 'Submenu');
+            const allSubmenus = document.querySelectorAll('.submenu');
+
+            allSubmenus.forEach(sm => {
+                if (sm !== submenu) {
+                    sm.classList.remove('active');
+                }
+            });
+
+            submenu.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.getElementById('fullscreenMenu').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleMenu();
+            }
+        });
+
+        // ===== MODAL FUNCTIONS =====
+        const leaderData = {
+            ketua: {
+                name: "Dr. H. Agung Supriyanto, S.P., M.M.",
+                position: "KETUA YAYASAN",
+                description: "Pendiri dan Ketua Yayasan SDIT Insan Madani Utama yang berdedikasi tinggi dalam dunia pendidikan. Dengan latar belakang pendidikan S3 dan pengalaman lebih dari 20 tahun, beliau memiliki visi untuk menjadikan SDIT Insan Madani Utama sebagai sekolah unggulan yang mencetak generasi Qur'ani berakhlak mulia.",
+                vision: "Mewujudkan sekolah yang menjadi mercusuar peradaban Islam dan mencetak pemimpin masa depan yang berkarakter kuat, berilmu, dan berakhlak mulia."
+            },
+            kepsek: {
+                name: "Hj. Siti Sugiarti, M.Pd.",
+                position: "KEPALA SEKOLAH",
+                description: "Kepala Sekolah SDIT Insan Madani Utama yang berpengalaman lebih dari 15 tahun dalam pendidikan dasar. Dengan latar belakang Magister Pendidikan, beliau memimpin dengan prinsip keteladanan dan komitmen tinggi terhadap kualitas pendidikan.",
+                vision: "Menjamin kualitas pendidikan yang seimbang antara IPTEK dan IMTAQ, serta menciptakan lingkungan belajar yang kondusif, aman, dan menyenangkan bagi seluruh siswa."
+            }
+        };
+
+        function openModal(leaderType) {
+            const data = leaderData[leaderType];
+            const modal = document.getElementById('leaderModal');
+            const header = document.getElementById('modalHeader');
+            const body = document.getElementById('modalBody');
+
+            header.innerHTML = `
+                <h2>${data.name}</h2>
+                <div class="position">${data.position}</div>
+            `;
+
+            body.innerHTML = `
+                <p><strong>Tentang:</strong> ${data.description}</p>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <strong style="color: var(--primary);">Visi & Misi:</strong>
+                    <p style="margin-top: 10px;">${data.vision}</p>
+                </div>
+                <p><strong>Pendidikan:</strong> S3 Ilmu Pendidikan</p>
+                <p><strong>Pengalaman:</strong> Lebih dari 20 tahun di bidang pendidikan</p>
+                <p><strong>Komitmen:</strong> Mewujudkan pendidikan terbaik dengan integrasi nilai-nilai Islami</p>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('leaderModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    if (this.id === 'leaderModal') closeModal();
+                    if (this.id === 'contactModal') closeContactModal();
+                }
+            });
+        });
+
+        // ===== SCROLL EFFECTS =====
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== KEYBOARD SHORTCUTS =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeContactModal();
+                if (document.getElementById('fullscreenMenu').classList.contains('active')) {
+                    toggleMenu();
+                }
+            }
+
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // ===== TOUCH SWIPE FOR SLIDER =====
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.hero-slider').addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.hero-slider').addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize slider
+            initSlider();
+
+            // Event listeners for buttons
+            document.getElementById('nextSlide').onclick = nextSlide;
+            document.getElementById('prevSlide').onclick = prevSlide;
+            document.getElementById('menuToggle').onclick = toggleMenu;
+            document.getElementById('closeMenu').onclick = toggleMenu;
+
+            // Close submenus when clicking menu links
+            document.querySelectorAll('.menu-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.getAttribute('onclick')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Pause slider on hover
+            const slider = document.querySelector('.hero-slider');
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', startAutoSlide);
+        });
+    </script>
+</body>
+
+</html>
