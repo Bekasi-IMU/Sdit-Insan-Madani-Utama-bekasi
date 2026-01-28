@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Sekolah Kita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffbb62; /* Warna kertas lama tapi bersih */
+            font-family: 'Work Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('abi slice.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Container Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Garis Tengah Timeline */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: #d4a373;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        /* Container Item */
+        .event {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        /* Posisi Kiri & Kanan */
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+
+        /* Titik di Garis Tengah */
+        .event::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: #fdfaf6;
+            border: 3px solid #d4a373;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .right::after { left: -8px; }
+
+        /* Kotak Konten */
+        .content {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .content:hover {
+            box-shadow: 0 10px 25px rgba(212, 163, 115, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .content h2 {
+            font-family: 'Crimson Text', serif;
+            color: #d4a373;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Responsive untuk HP */
+        @media screen and (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .event { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+            .event::after { left: 22px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Jejak Sejarah</h1>
+        <p>Menelusuri Perjalanan Sekolah Kami dari Masa ke Masa</p>
+    </header>
+
+    <div class="timeline">
+        <div class="event left">
+            <div class="content">
+                <h2></h2>
+                <p>Awal Pendirian
+Sekolah ini didirikan oleh Yayasan Insan Madani Utama yang dipimpin oleh Bapak H. Agung Supriyanto, MM. Semangat awalnya adalah menghadirkan lembaga pendidikan yang tidak hanya unggul secara akademik, tetapi juga mengutamakan pembentukan karakter (adab) dan kedekatan dengan Al-Qur'an.
+               </p>
+            </div>
+        </div>
+
+        <div class="event right">
+            <div class="content">
+                <h2></h2>
+                <p>Berkembang Menjadi Sekolah Islam Terpadu (SIT)
+Seiring berjalannya waktu, sekolah ini bergabung dalam jaringan Sekolah Islam Terpadu. Sistem ini memadukan kurikulum pendidikan nasional dengan pendidikan agama yang mendalam, seperti adanya program unggulan Tahfidz Al-Qur'an.
+Fokus pada Prestasi dan Karakter
+Sekolah ini terus berkembang dengan melengkapi berbagai fasilitas pendukung dan kegiatan ekstrakurikuler yang aktif. </p>
+            </div>
+        </div>
+
+        <div class="event left">
+            <div class="content">
+                <h2></h2>
+                <p>Fokus utamanya tetap konsisten, yaitu membentuk "Generasi Rabbani" yang cerdas di bidang ilmu pengetahuan namun tetap memiliki iman yang kuat.
+Lokasi dan Dedikasi</p>
+            </div>
+        </div>
+
+        <div class="event right">
+            <div class="content">
+                <h2>Sekarang</h2>
+                <p>Hingga saat ini, SDIT Insan Madani Utama terus berdedikasi melayani pendidikan di wilayah Jakasampurna, Bekasi Barat, dan telah melahirkan banyak lulusan yang berprestasi serta berakhlakul karimah.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

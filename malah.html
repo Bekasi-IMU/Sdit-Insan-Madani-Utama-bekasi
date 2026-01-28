@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Aesthetic - Adelard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Background gradasi estetik */
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Container utama dengan efek kaca */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px); /* Efek blur di belakang kartu */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Foto dengan lengkungan halus */
+        .glass-card img {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Judul menggunakan font serif elegan */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #444;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        /* Garis pemisah tipis */
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: #fff;
+            margin: 15px auto;
+            opacity: 0.6;
+        }
+
+        /* Teks deskripsi */
+        p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555;
+            padding: 0 15px 15px;
+            font-weight: 300;
+        }
+
+        /* Ikon pemanis (opsional) */
+        .leaf-icon {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <img src="pg.png" alt="Aesthetic Nature">
+        
+        <div class="leaf-icon">🍃</div>
+        <h1>Quran Camp</h1>
+        <div class="divider"></div>
+        <p>
+          Mendekap Cahaya Al-Qur'an di Alam Terbuka."
+          "Quran Camp bukan sekadar menghafal, tapi tentang meresapi setiap ayat
+ di tengah ketenangan alam. Menjadikan Al-Qur'an sebagai sahabat setia dan kompas dalam kehidupan
+        </p>
+    </div>
+
+       <div class="glass-card">
+        <img src="pg.png" alt="Aesthetic Nature">
+        
+        <div class="leaf-icon">🍃</div>
+        <h1>Mabid</h1>
+        <div class="divider"></div>
+        <p>
+   "Menjemput Berkah di Sepertiga Malam."
+"Melalui program Mabit, kami belajar disiplin dalam beribadah, mulai dari tadarus bersama hingga syahdunya shalat Tahajjud berjamaah. Menghidupkan malam dengan doa dan ilmu."
+        </p>
+    </div>
+
+</body>
+</html>

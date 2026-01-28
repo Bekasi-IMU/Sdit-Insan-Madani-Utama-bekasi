@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adelard's Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Warna Latar Gelap yang Mewah */
+            background-color: #0f1014;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Quicksand', sans-serif;
+            color: #fff;
+        }
+
+        /* Container Utama */
+        .card-container {
+            position: relative;
+            width: 380px;
+            padding: 5px;
+            background: linear-gradient(45deg, #ff00cc, #3333ff); /* Gradasi Warna Neon */
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Bagian Dalam Kartu */
+        .card-inner {
+            background: #1a1b21;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Styling Foto */
+        .card-inner img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Judul */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tag Program/Kegiatan */
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(51, 51, 255, 0.2);
+            border: 1px solid #3333ff;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8ec5fc;
+            margin-bottom: 15px;
+        }
+
+        /* Teks Deskripsi */
+        p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #a0a0a0;
+            margin-bottom: 20px;
+        }
+
+        /* Tombol Interaktif */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff00cc, #3333ff);
+            padding: 10px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 0, 204, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 0, 204, 0.5);
+        }
+
+        /* Dekorasi Lingkaran Cahaya */
+        .glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,0,204,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="glow"></div>
+        <div class="card-inner">
+            <img src="lapangan.png" alt="Abstract Art">
+            
+            <div class="tag">Next Program</div>
+            <h1>LAPANGAN</h1>
+    
+ 
+        </div>
+         
+    <div class="card-container">
+        <div class="glow"></div>
+        <div class="card-inner">
+            <img src="rumah allah.png" alt="Abstract Art">
+            
+            <div class="tag">Next Program</div>
+            <h1>MASJID IMU</h1>
+ 
+ 
+        </div>
+
+    <div class="card-container">
+        <div class="glow"></div>
+        <div class="card-inner">
+            <img src="lah2.png" alt="Abstract Art">
+            
+            <div class="tag">Next Program</div>
+            <h1>RUANG KELAS</h1>
+       
+ 
+        </div>
+
+    <div class="card-container">
+        <div class="glow"></div>
+        <div class="card-inner">
+            <img src="lah.png" alt="Abstract Art">
+            
+            <div class="tag">Next Program</div>
+            <h1>RUANG KOMPUTER</h1>
+ 
+        </div>
+    </div>
+
+</body>
+</html>
